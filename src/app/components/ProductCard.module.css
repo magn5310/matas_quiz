@@ -1,0 +1,14 @@
+.productCard {
+  max-width: 300px;
+  background-color: rgb(242, 242, 242);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 10px;
+}
+
+.productImage {
+  width: 100%;
+  object-fit: cover;
+}
