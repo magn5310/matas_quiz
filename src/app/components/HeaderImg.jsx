@@ -1,3 +1,5 @@
+import styles from "./HeaderImg.module.css";
+
 export default function HeaderImg() {
-  return <div></div>;
+  return <header></header>;
 }

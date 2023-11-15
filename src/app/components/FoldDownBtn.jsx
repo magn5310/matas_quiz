@@ -1,3 +1,3 @@
 export default function FoldDownBtn() {
-  return <div></div>;
+  return <button></button>;
 }
