@@ -9,7 +9,7 @@ export default function CheckboxContainer(props) {
   
   
 
-<section className="flex flex-col gap-2 w-60 mx-auto mt-6">
+<section className="flex flex-col gap-2 w-60 mx-auto mt-2">
 
   <Checkbox label="Tyndt"/>
   <Checkbox label="Tykt"/>
