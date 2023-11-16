@@ -1,4 +1,3 @@
-import styles from "./ProductCard.module.css";
 import { AiFillStar } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
