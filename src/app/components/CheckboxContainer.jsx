@@ -1,4 +1,4 @@
-"use client"
+
 
 import Checkbox from "./Checkbox";
 
