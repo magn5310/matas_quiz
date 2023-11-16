@@ -1,12 +1,11 @@
-import styles from "./ProductCard.module.css";
 import { AiFillStar } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
 export default function ProductCard() {
   return (
-    <article className={styles.productCard}>
+    <article className="flex flex-col bg-slate-100 max-w-xs ">
       <p className="bg-slate-200 p-1 rounded-lg self-start">Værdi 880,-</p>
-      <img className={styles.productImage} src="/pics/product.jpg" alt="product" />
+      <img className="object-cover max-w-full" src="/pics/product.jpg" alt="product" />
       <div className="flex items-center">
         <AiFillStar />
         <AiFillStar />
