@@ -3,9 +3,9 @@ import { AiFillHeart } from "react-icons/ai";
 
 export default function ProductCard({name, id, image, brand, price}) {
   return (
-    <article className="flex flex-col bg-slate-100 max-w-xs ">
-      <p className="bg-slate-200 p-1 rounded-lg self-start">Værdi 880,-</p>
-      <img className="object-cover max-w-full" src={image} alt="product" />
+    <article className="flex flex-col p-4 bg-white max-w-xs rounded-lg overflow-hidden">
+      <p className="bg-slate-200 p-1 font-inter rounded-lg self-start">Værdi 880,-</p>
+      <img className="object-cover h-40	flex justify-center align-middle mx-auto py-4 w-max" src={image} alt="product" />
       <div className="flex items-center">
         <AiFillStar />
         <AiFillStar />

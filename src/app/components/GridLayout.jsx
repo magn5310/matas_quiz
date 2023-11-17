@@ -1,4 +1,5 @@
 import ProductCard from "./ProductCard";
+import QuizCard from "./QuizCard";
 
 
 
@@ -28,12 +29,14 @@ export  default async function  GridLayout() {
   
   
   return (
-    <div className="grid grid-cols-4 gap-4 p-32 items-stretch">
-      
+
+    <div className="grid grid-cols-mainGrid gap-4 p-32 items-stretch">
+    <QuizCard/>    
      {
   data.map((item) => (
     <ProductCard name={item.name} image={item.image} brand={item.brand} id={item.id} price={item.price} key={item.id}/>
   ))} 
+  
   
 
 

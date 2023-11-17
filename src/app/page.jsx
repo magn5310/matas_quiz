@@ -1,4 +1,5 @@
 import Quiz from "./components/Quiz";
+import GridLayout from "./components/GridLayout";
 
 export default async function Home() {
 
@@ -17,7 +18,8 @@ export default async function Home() {
 
   return (
     <main className="bg-slate-100">
-      <Quiz data={data} />
+    <GridLayout/>  
+    <Quiz data={data} />
     </main>
   );
 }
