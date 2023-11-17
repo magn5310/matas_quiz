@@ -16,7 +16,6 @@ import SecondaryBtn from "./SecondaryBtn";
 
 export default function Quiz() {
   const [visible, setVisible] = useState(0);
-  const views = [<Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />];
   const questions = [
     { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: ["Tørt hår", "Spaltede Spidser", "Kruset hår", "Manglende fylde", "Filtret hår", "Tør hovedbund", "Fedtet hår", "Skæl", "Lus", "Ingen problemer"] },
     { question: "Hvilken hårtype har du?", amount: "kun 1", answers: ["Normalt", "Fint", "Kraftigt", "Ved ikke"] },
