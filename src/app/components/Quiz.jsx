@@ -14,14 +14,41 @@ import NextBtn from "./NextBtn";
 import ProgressBar from "./ProgressBar";
 import SecondaryBtn from "./SecondaryBtn";
 
-export default function Quiz() {
-  const [visible, setVisible] = useState(0);
-  const questions = [
-    { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: ["Tørt hår", "Spaltede Spidser", "Kruset hår", "Manglende fylde", "Filtret hår", "Tør hovedbund", "Fedtet hår", "Skæl", "Lus", "Ingen problemer"] },
-    { question: "Hvilken hårtype har du?", amount: "kun 1", answers: ["Normalt", "Fint", "Kraftigt", "Ved ikke"] },
-    { question: "Hvad leder du efter?", amount: "kun 1", answers: ["Kun hårshampoo", "Hårshampoo og balsam", "Kun balsam", "Hårkur", "Hårolie/-serum"] },
-    { question: "Vis mig", amount: "så mange du vil", answers: ["Kun hårshampoo", "Hårshampoo og balsam", "Kun balsam", "Hårkur", "Hårolie/-serum"] },
-  ];
+export default  function Quiz(props) {
+
+console.log(props.data)
+
+const [visible, setVisible] = useState(0);
+
+
+const hårtypeArray = [];
+
+{props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => (
+    hårtypeArray.concat(item.Filterværdi)
+    
+    
+    
+    
+    
+    ))} 
+
+
+console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
+
+
+  
+      const questions = [
+    
+         
+        { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },  
+        { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },  
+        { question: "Hvad er dit køb", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },  
+    
+            
+     
+    
+];
+  
 
   function previousQuestion() {
     setVisible((oldValue) => {
@@ -56,7 +83,7 @@ export default function Quiz() {
             <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
-                <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer} />
+                <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} />
               ))}
             </CheckboxContainer>
           </>

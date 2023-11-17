@@ -34,7 +34,7 @@ export  default async function  GridLayout() {
   data.map((item) => (
     <ProductCard name={item.name} image={item.image} brand={item.brand} id={item.id} price={item.price} key={item.id}/>
   ))} 
-
+  
 
 
     
