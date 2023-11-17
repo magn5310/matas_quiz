@@ -18,8 +18,10 @@ export default function Quiz() {
   const [visible, setVisible] = useState(0);
   const views = [<Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />];
   const questions = [
-    { question: "Har du grimt hår?", amount: "minimum to", answers: ["Ja", "Nej", "Ja, men benægter det", "Grimt er hvad grimt gør", "Det femte element"] },
-    { question: "Har du pænt hår?", amount: "maximum to", answers: ["Nej", "Ja", "Nej, og benægter det", "Pænt er hvad pænt gør", "Det femte element"] },
+    { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: ["Tørt hår", "Spaltede Spidser", "Kruset hår", "Manglende fylde", "Filtret hår", "Tør hovedbund", "Fedtet hår", "Skæl", "Lus", "Ingen problemer"] },
+    { question: "Hvilken hårtype har du?", amount: "kun 1", answers: ["Normalt", "Fint", "Kraftigt", "Ved ikke"] },
+    { question: "Hvad leder du efter?", amount: "kun 1", answers: ["Kun hårshampoo", "Hårshampoo og balsam", "Kun balsam", "Hårkur", "Hårolie/-serum"] },
+    { question: "Vis mig", amount: "så mange du vil", answers: ["Kun hårshampoo", "Hårshampoo og balsam", "Kun balsam", "Hårkur", "Hårolie/-serum"] },
   ];
 
   function previousQuestion() {
@@ -55,7 +57,7 @@ export default function Quiz() {
             <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
-                <Checkbox label={answer} />
+                <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer} />
               ))}
             </CheckboxContainer>
           </>
