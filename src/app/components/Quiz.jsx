@@ -14,14 +14,46 @@ import NextBtn from "./NextBtn";
 import ProgressBar from "./ProgressBar";
 import SecondaryBtn from "./SecondaryBtn";
 
-export default function Quiz() {
-  const [visible, setVisible] = useState(0);
-  const views = [<section key="1">Spørgsmål 1</section>, <section key="2">Spørgsmål 2</section>, <section key="3">Spørgsmål 3</section>, <section key="4">Spørgsmål 4</section>];
+export default  function Quiz(props) {
+
+console.log(props.data)
+
+const [visible, setVisible] = useState(0);
+
+
+const hårtypeArray = [];
+
+{props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => (
+    hårtypeArray.concat(item.Filterværdi)
+    
+    
+    
+    
+    
+    ))} 
+
+
+console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
+
+
+  
+      const questions = [
+    
+         
+        { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },  
+        { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },  
+        { question: "Hvad er dit køb", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },  
+    
+            
+     
+    
+];
+  
 
   function previousQuestion() {
     setVisible((oldValue) => {
       if (oldValue === 0) {
-        return views.length - 1;
+        return questions.length - 1;
       }
       console.log(`Previous: The count is ${visible}`);
       return oldValue - 1;
@@ -30,7 +62,7 @@ export default function Quiz() {
 
   function nextQuestion() {
     setVisible((oldValue) => {
-      if (oldValue === views.length - 1) {
+      if (oldValue === questions.length - 1) {
         return 0;
       }
       console.log(`Next: The count is ${visible}`);
@@ -45,21 +77,25 @@ export default function Quiz() {
       <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
         <ProgressBar />
 
-        <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">Hvilken hårtype har du?</h3>
-        <h4 className="text-center text-rose-500 text-sm font-normal">Vælg min 2</h4>
-
-        <CheckboxContainer />
+        {questions[visible] && (
+          <>
+            <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">{questions[visible].question}</h3>
+            <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {questions[visible].amount}</h4>
+            <CheckboxContainer>
+              {questions[visible].answers.map((answer) => (
+                <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} />
+              ))}
+            </CheckboxContainer>
+          </>
+        )}
 
         <NavBtnContainer>
-          <BackBtn onClick={previousQuestion} />
-          <NextBtn onClick={nextQuestion} />
+          <BackBtn previousQuestion={previousQuestion} currentQuestion={questions[visible]} />
+          <NextBtn nextQuestion={nextQuestion} currentQuestion={questions[visible]} />
         </NavBtnContainer>
 
         <SecondaryBtn />
       </section>
-      <button onClick={previousQuestion}>Previous</button>
-      <button onClick={nextQuestion}>Next</button>
-      {views[visible]}
     </div>
   );
 }
