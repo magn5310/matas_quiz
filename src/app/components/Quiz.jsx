@@ -19,7 +19,7 @@ export default function Quiz() {
   const views = [<Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />];
   const questions = [
     { question: "Har du grimt hår?", amount: "minimum to", answers: ["Ja", "Nej", "Ja, men benægter det", "Grimt er hvad grimt gør", "Det femte element"] },
-    { question: "Har du pænt hår?", amount: "minimum to", answers: ["Ja", "Nej", "Ja, men benægter det", "Grimt er hvad grimt gør", "Det femte element"] },
+    { question: "Har du pænt hår?", amount: "maximum to", answers: ["Nej", "Ja", "Nej, og benægter det", "Pænt er hvad pænt gør", "Det femte element"] },
   ];
 
   function previousQuestion() {
@@ -49,17 +49,17 @@ export default function Quiz() {
       <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
         <ProgressBar />
 
-        {questions.map((question, index) => (
+        {questions[visible] && (
           <>
-            <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">{question.question}</h3>
-            <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {question.amount}</h4>
+            <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">{questions[visible].question}</h3>
+            <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
-              {question.answers.map((answer) => (
+              {questions[visible].answers.map((answer) => (
                 <Checkbox label={answer} />
               ))}
             </CheckboxContainer>
           </>
-        ))}
+        )}
 
         <NavBtnContainer>
           <BackBtn previousQuestion={previousQuestion} currentQuestion={questions[visible]} />
