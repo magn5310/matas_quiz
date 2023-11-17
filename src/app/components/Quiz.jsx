@@ -16,12 +16,16 @@ import SecondaryBtn from "./SecondaryBtn";
 
 export default function Quiz() {
   const [visible, setVisible] = useState(0);
-  const views = [<section key="1">Spørgsmål 1</section>, <section key="2">Spørgsmål 2</section>, <section key="3">Spørgsmål 3</section>, <section key="4">Spørgsmål 4</section>];
+  const views = [<Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />, <Checkbox label="Ja" />];
+  const questions = [
+    { question: "Har du grimt hår?", amount: "minimum to", answers: ["Ja", "Nej", "Ja, men benægter det", "Grimt er hvad grimt gør", "Det femte element"] },
+    { question: "Har du pænt hår?", amount: "minimum to", answers: ["Ja", "Nej", "Ja, men benægter det", "Grimt er hvad grimt gør", "Det femte element"] },
+  ];
 
   function previousQuestion() {
     setVisible((oldValue) => {
       if (oldValue === 0) {
-        return views.length - 1;
+        return questions.length - 1;
       }
       console.log(`Previous: The count is ${visible}`);
       return oldValue - 1;
@@ -30,7 +34,7 @@ export default function Quiz() {
 
   function nextQuestion() {
     setVisible((oldValue) => {
-      if (oldValue === views.length - 1) {
+      if (oldValue === questions.length - 1) {
         return 0;
       }
       console.log(`Next: The count is ${visible}`);
@@ -45,21 +49,25 @@ export default function Quiz() {
       <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
         <ProgressBar />
 
-        <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">Hvilken hårtype har du?</h3>
-        <h4 className="text-center text-rose-500 text-sm font-normal">Vælg min 2</h4>
-
-        <CheckboxContainer />
+        {questions.map((question, index) => (
+          <>
+            <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">{question.question}</h3>
+            <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {question.amount}</h4>
+            <CheckboxContainer>
+              {question.answers.map((answer) => (
+                <Checkbox label={answer} />
+              ))}
+            </CheckboxContainer>
+          </>
+        ))}
 
         <NavBtnContainer>
-          <BackBtn onClick={previousQuestion} />
-          <NextBtn onClick={nextQuestion} />
+          <BackBtn previousQuestion={previousQuestion} currentQuestion={questions[visible]} />
+          <NextBtn nextQuestion={nextQuestion} currentQuestion={questions[visible]} />
         </NavBtnContainer>
 
         <SecondaryBtn />
       </section>
-      <button onClick={previousQuestion}>Previous</button>
-      <button onClick={nextQuestion}>Next</button>
-      {views[visible]}
     </div>
   );
 }
