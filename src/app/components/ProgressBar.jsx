@@ -1,5 +1,3 @@
-// ProgressBar.js
-
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -10,7 +8,7 @@ export default function ProgressBar() {
   function changeFraction() {
     setFraction((currentFraction) => {
       const currentIndex = myArray.indexOf(currentFraction);
-      const nextIndex = (currentIndex + 1) % myArray.length; // Ensure circular indexing
+      const nextIndex = (currentIndex + 1) % myArray.length;
       return myArray[nextIndex];
     });
   }
