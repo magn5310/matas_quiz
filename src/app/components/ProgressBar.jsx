@@ -21,9 +21,9 @@ export default function ProgressBar() {
         <p className="text-xs font-bold text-rose-500">209 produkter fundet</p>
       </div>
       <div className="bg-rose-200 w-full h-3 rounded overflow-hidden mt-1">
-        <div className={`h-full w-${fraction}`}>
-          <Image className="h-full w-full object-cover" src="/pics/bar-bg.svg" width={400} height={10} alt="Quiz Progress" />
-        </div>
+        {/* <div className={`h-full w-[$]`}> */}
+        <Image className={`h-full w-${fraction} object-cover`} src="/pics/bar-bg.svg" width={400} height={10} alt="Quiz Progress" />
+        {/* </div> */}
       </div>
     </div>
   );
