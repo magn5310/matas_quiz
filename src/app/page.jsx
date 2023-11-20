@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Quiz from "./components/Quiz";
+import Profile from "./components/Profile";
 
 
 
@@ -43,6 +44,7 @@ export default function Home() {
 
   return (
     <main className="bg-slate-100">
+<Profile/>
       <Quiz setAnswer={setAnswer}/>
     </main>
   );
