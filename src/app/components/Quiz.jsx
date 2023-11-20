@@ -75,7 +75,7 @@ console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
       <HeaderImg />
 
       <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
-        <ProgressBar />
+        <ProgressBar questions={questions}/>
 
         {questions[visible] && (
           <>
