@@ -14,41 +14,24 @@ import NextBtn from "./NextBtn";
 import ProgressBar from "./ProgressBar";
 import SecondaryBtn from "./SecondaryBtn";
 
-export default  function Quiz(props) {
+export default function Quiz(props) {
+  console.log(props.data);
 
-console.log(props.data)
+  const [visible, setVisible] = useState(0);
 
-const [visible, setVisible] = useState(0);
+  const hårtypeArray = [];
 
+  {
+    props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => hårtypeArray.concat(item.Filterværdi));
+  }
 
-const hårtypeArray = [];
+  console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"));
 
-{props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => (
-    hårtypeArray.concat(item.Filterværdi)
-    
-    
-    
-    
-    
-    ))} 
-
-
-console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
-
-
-  
-      const questions = [
-    
-         
-        { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },  
-        { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },  
-        { question: "Hvad er dit køb", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },  
-    
-            
-     
-    
-];
-  
+  const questions = [
+    { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
+    { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
+    { question: "Hvilket køn identificerer du dig som?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
+  ];
 
   function previousQuestion() {
     setVisible((oldValue) => {
@@ -75,7 +58,7 @@ console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
       <HeaderImg />
 
       <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
-        <ProgressBar questions={questions}/>
+        <ProgressBar questions={questions} />
 
         {questions[visible] && (
           <>
