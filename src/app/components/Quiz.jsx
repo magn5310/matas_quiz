@@ -69,8 +69,8 @@ export default function Quiz(props) {
     props.setAnswer(newObject);
 
     
-console.log("dette er det jeg har gang i nu", props.answer)
-    props.postplease(newObject);
+    console.log("dette er det jeg har gang i nu", props.answer)
+    
 
     console.log("i min funktion spørgsmål", questionNumber, "svar:", answerNumber )
 }
@@ -95,8 +95,8 @@ console.log("dette er det jeg har gang i nu", props.answer)
         )}
 
         <NavBtnContainer>
-          <BackBtn previousQuestion={previousQuestion} currentQuestion={questions[visible]} />
-          <NextBtn nextQuestion={nextQuestion} currentQuestion={questions[visible]} />
+          <BackBtn  previousQuestion={previousQuestion} currentQuestion={questions[visible]} />
+          <NextBtn postplease={props.postplease} toggleQuiz={props.toggleQuiz} nextQuestion={nextQuestion} currentQuestion={questions[visible]} arrayLength={visible} />
         </NavBtnContainer>
 
         <SecondaryBtn />

@@ -6,23 +6,26 @@ import { useState, useEffect } from "react";
 export default function GridLayout({ data, data2}) {
   console.log("Det her er min NYE data.", data);
   const [toggleQuiz, setToggleQuiz] = useState(false);
-  function toggleHandler() {
-    setToggleQuiz((old) => !old);
-  }
+ 
 
   const [answer, setAnswer] = useState({
     name:"",
     q1:"",
     a1:[],
     q2:"",
-    a2:"",
+    a2:[],
     q3:"",
-    a3:"",
+    a3:[],
     q4:"",
-    a4:"",
+    a4:[],
     q5:"",
-    a5:""
+    a5:[]
     });
+
+    function toggleHandler() {
+      setToggleQuiz((old) => !old);
+      postplease(answer)
+    }
 
     async function postAnswer(answer){
       console.log(answer)
@@ -41,10 +44,10 @@ export default function GridLayout({ data, data2}) {
        });
        
        let data = await response.text();
-       console.log(data);
+       console.log("NU ER DER FANDEME PUSHET");
       }
       
-function postplease(data){
+function postplease(answer){
   console.log("dette er min state", answer)
   postAnswer(answer);
 }
