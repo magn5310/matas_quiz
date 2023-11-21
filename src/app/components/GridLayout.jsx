@@ -12,7 +12,7 @@ export default function GridLayout({ data, data2 }) {
   return (
     <>
       {!toggleQuiz ? (
-        <div className="grid grid-cols-mainGrid gap-4 p-32 items-stretch">
+        <div className="grid grid-cols-mainGrid gap-4 p-32 items-stretch relative">
           <QuizCard toggleQuiz={toggleHandler} />
 
           {data2.map((item) => (
