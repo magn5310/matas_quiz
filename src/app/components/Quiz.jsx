@@ -14,41 +14,24 @@ import NextBtn from "./NextBtn";
 import ProgressBar from "./ProgressBar";
 import SecondaryBtn from "./SecondaryBtn";
 
-export default  function Quiz(props) {
+export default function Quiz(props) {
+  console.log(props.data);
 
-console.log(props.data)
+  const [visible, setVisible] = useState(0);
 
-const [visible, setVisible] = useState(0);
+  const hårtypeArray = [];
 
+  {
+    props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => hårtypeArray.concat(item.Filterværdi));
+  }
 
-const hårtypeArray = [];
+  console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"));
 
-{props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => (
-    hårtypeArray.concat(item.Filterværdi)
-    
-    
-    
-    
-    
-    ))} 
-
-
-console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
-
-
-  
-      const questions = [
-    
-         
-        { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },  
-        { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },  
-        { question: "Hvad er dit køb", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },  
-    
-            
-     
-    
-];
-  
+  const questions = [
+    { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
+    { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
+    { question: "Hvad er dit køb", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
+  ];
 
   function previousQuestion() {
     setVisible((oldValue) => {
@@ -71,16 +54,15 @@ console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"))
   }
 
   return (
-    <div className="w-9/12 mx-auto my-2 overflow-hidden rounded-lg drop-shadow-md ">
+    <div className="bg-white w-full mx-auto mt-28 overflow-hidden rounded-2xl drop-shadow-md md:w-9/12">
       <HeaderImg />
+      <ProgressBar questions={questions} />
 
-      <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
-        <ProgressBar questions={questions}/>
-
+      <section className="overscroll-y-contain gap-y-2 px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
         {questions[visible] && (
           <>
-            <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">{questions[visible].question}</h3>
-            <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {questions[visible].amount}</h4>
+            <h3 className="text-center text-rose-500 font-medium font-sans text-2xl">{questions[visible].question}</h3>
+            <h4 className="self-start text-zinc-700 text-sm font-normal md:self-center">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
                 <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} />

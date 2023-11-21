@@ -11,17 +11,13 @@ export default function HeaderImg() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-      }}
-     
-    >
-      
+        backgroundPositionY: "40%",
+      }}>
       <FoldDownBtn />
-      <h2 className="text-4xl text-center font-dm text-white row-start-2 col-start-2 z-30 mb-5">
+      <h2 className="text-3xl text-center font-dm text-white row-start-2 col-start-2 z-30 mb-5">
         Find de bedste <br /> hårprodukter til dit hår
       </h2>
-      <div className="w-full h-full col-span-full row-start-1 row-end-4 bg-rose-400 z-0 opacity-40" >
-        
-      </div>
+      <div className="w-full h-full col-span-full row-start-1 row-end-4 bg-rose-400 z-0 opacity-40"></div>
     </header>
   );
 }
