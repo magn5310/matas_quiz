@@ -2,21 +2,23 @@
 import { stringify } from "postcss";
 import { useState } from "react";
 
+
+
 export default function Checkbox(props) {
-  const [isChecked, setIsChecked] = useState(false);
+
+
+  const [isChecked, setIsChecked] = useState(props.checked);
 
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
 
-
+    
 
 const number = (props.questionIndex+1).toString();
 const qIndex = "q" + number;
 const aIndex = "a" + number;
 
 props.getAnswerAndSend(qIndex, aIndex, props.label)
-
-
 
 console.log("mit index", qIndex)
 
@@ -30,6 +32,9 @@ console.log("mit index", qIndex)
       htmlFor={props.label}>
       {props.label}
       <input className="rounded-full  accent-rose-500 border border-solid border-white outline-rose-500" id={props.label} type="checkbox" checked={isChecked} onChange={toggleCheckbox} />
+
+      
+
     </label>
   );
 }

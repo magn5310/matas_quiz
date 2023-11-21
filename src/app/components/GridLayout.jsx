@@ -8,6 +8,9 @@ export default function GridLayout({ data, data2}) {
   const [toggleQuiz, setToggleQuiz] = useState(false);
  
 
+
+
+  
   const [answer, setAnswer] = useState({
     name:"",
     q1:"",

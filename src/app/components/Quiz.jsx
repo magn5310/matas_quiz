@@ -47,6 +47,8 @@ export default function Quiz(props) {
     });
   }
 
+let checked=false;
+
   function nextQuestion() {
     setVisible((oldValue) => {
       if (oldValue === questions.length - 1) {
@@ -55,8 +57,12 @@ export default function Quiz(props) {
       console.log(`Next: The count is ${visible}`);
       return oldValue + 1;
     });
+
+    checked = true;
+    console.log("chekdeewhrioew",checked)
   }
 
+  
 
   function getAnswerAndSend(questionNumber, answerNumber, answerText){
     const newObject = {...props.answer};
@@ -88,7 +94,7 @@ export default function Quiz(props) {
             <h4 className="self-start text-zinc-700 text-sm font-normal md:self-center">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
-                <Checkbox getAnswerAndSend={getAnswerAndSend} setAnswer={props.setAnswer} key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} questionIndex={visible} />
+                <Checkbox checked={false} getAnswerAndSend={getAnswerAndSend} setAnswer={props.setAnswer} key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} questionIndex={visible} />
               ))}
             </CheckboxContainer>
           </>
