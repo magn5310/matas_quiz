@@ -1,10 +1,11 @@
 "use client";
+import React, { useState } from "react";
 
 
+export default function profile() {
 
-export default function profile({}) {
-
-    
+    const [myProfileName, setmyProfileName] = useState();
+    const [myprofile, setmyProfile] = useState();
 
     async function showProfile(user){
     let headersList = {
@@ -20,7 +21,12 @@ export default function profile({}) {
        let data = await response.json();
        
 data.filter((item) => item.name === "Julius")
-console.log("Det her er dataen til mig", data);
+
+var myProfileData = data[0];
+
+console.log("Det her er dataen til mig", myProfileData);
+setmyProfile(myProfileData)
+console.log("dette er min state", myprofile)
     }
 
 
@@ -30,12 +36,62 @@ console.log("Det her er dataen til mig", data);
 
 
 <section>
+<section>
+{myprofile ? 
+<div>
+
+<h1>
+  Velkommen tilbage  {myprofile.name}
+</h1>
+
+<section>
+    <h2>
+    Det bedste hårprodukt til dig
+
+    </h2>
+
+    <h4>
+        {myprofile.q1}
+    </h4>
+    <p>
+        {myprofile.a1}
+    </p>
+   
+   { myprofile.q2 ? <div> <h4>{myprofile.q2}</h4> <p>{myprofile.q2}</p></div>:null}
+   { myprofile.q3 ? <div> <h4>{myprofile.q3}</h4> <p>{myprofile.q3}</p></div>:null}
+   { myprofile.q4 ? <div> <h4>{myprofile.q4}</h4> <p>{myprofile.q4}</p></div>:null}
+   { myprofile.q5 ? <div> <h4>{myprofile.q5}</h4> <p>{myprofile.q5}</p></div>:null}
+    
+<button>
+    Se dit resultat
+</button>
+
+</section>
+
+
+</div>
+
+: 
+
+<div>
 <label htmlFor="name">
 Name
 <input name="userName" id="name" type="text" />
 </label>
 <button onClick={showProfile}>Klick mig </button>
+</div>
+
+
+}
+
+
+
 </section>
+
+
+
+</section>
+
 
 
   );
