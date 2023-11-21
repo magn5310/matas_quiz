@@ -1,4 +1,5 @@
 "use client";
+import { stringify } from "postcss";
 import { useState } from "react";
 
 export default function Checkbox(props) {
@@ -6,6 +7,21 @@ export default function Checkbox(props) {
 
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
+
+
+
+const number = (props.questionIndex+1).toString();
+const qIndex = "q" + number;
+const aIndex = "a" + number;
+
+props.getAnswerAndSend(qIndex, aIndex, props.label)
+
+
+
+console.log("mit index", qIndex)
+
+
+    
   };
 
   return (

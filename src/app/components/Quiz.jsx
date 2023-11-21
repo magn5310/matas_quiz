@@ -17,6 +17,9 @@ import SecondaryBtn from "./SecondaryBtn";
 export default function Quiz(props) {
   console.log(props.data);
 
+
+
+
   const [visible, setVisible] = useState(0);
 
   const hårtypeArray = [];
@@ -54,6 +57,25 @@ export default function Quiz(props) {
     });
   }
 
+
+  function getAnswerAndSend(questionNumber, answerNumber, answerText){
+    const newObject = {...props.answer};
+    console.log("dette er en kopi", newObject)
+
+    newObject[questionNumber]=questions[visible].question;
+    
+    newObject[answerNumber].push(answerText)
+
+    props.setAnswer(newObject);
+
+    
+console.log("dette er det jeg har gang i nu", props.answer)
+    props.postplease(newObject);
+
+    console.log("i min funktion spørgsmål", questionNumber, "svar:", answerNumber )
+}
+
+
   return (
     <div className="bg-white w-full mx-auto mt-28 overflow-hidden rounded-2xl drop-shadow-md md:w-9/12">
       <HeaderImg toggleQuiz={props.toggleQuiz} />
@@ -66,7 +88,7 @@ export default function Quiz(props) {
             <h4 className="self-start text-zinc-700 text-sm font-normal md:self-center">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
-                <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} />
+                <Checkbox getAnswerAndSend={getAnswerAndSend} setAnswer={props.setAnswer} key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} questionIndex={visible} />
               ))}
             </CheckboxContainer>
           </>
