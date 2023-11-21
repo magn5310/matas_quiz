@@ -55,15 +55,15 @@ export default function Quiz(props) {
   }
 
   return (
-    <div className="w-9/12 mx-auto my-2 overflow-hidden rounded-lg drop-shadow-md ">
+    <div className="bg-white w-full mx-auto mt-28 overflow-hidden rounded-2xl drop-shadow-md md:w-9/12">
       <HeaderImg />
+      <ProgressBar questions={questions} />
 
-      <section className=" bg-white gap-y-2  px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
-        <ProgressBar questions={questions} currentQuestion={visible} totalQuestions={questions.length} />
+      <section className="overscroll-y-contain gap-y-2 px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
         {questions[visible] && (
           <>
-            <h3 className="text-center text-rose-500 font-medium mt-5	 font-sans text-2xl">{questions[visible].question}</h3>
-            <h4 className="text-center text-rose-500 text-sm font-normal">Vælg {questions[visible].amount}</h4>
+            <h3 className="text-center text-rose-500 font-medium font-sans text-2xl">{questions[visible].question}</h3>
+            <h4 className="self-start text-zinc-700 text-sm font-normal md:self-center">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
                 <Checkbox key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} />
