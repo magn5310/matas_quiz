@@ -7,7 +7,7 @@ export default function ProgressBar(props) {
   };
 
   return (
-    <div className="px-2 w-full">
+    <div className="px-2 py-1 md:px-8 w-full">
       <div className="flex justify-between">
         <p className="text-xs font-bold text-rose-500">{widthPercentage}%</p>
         <p className="text-xs font-bold text-rose-500">200 produkter fundet</p>
