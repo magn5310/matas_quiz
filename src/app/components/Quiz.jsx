@@ -56,7 +56,7 @@ export default function Quiz(props) {
 
   return (
     <div className="bg-white w-full mx-auto mt-28 overflow-hidden rounded-2xl drop-shadow-md md:w-9/12">
-      <HeaderImg />
+      <HeaderImg toggleQuiz={props.toggleQuiz} />
       <ProgressBar questions={questions} currentQuestion={visible} totalQuestions={questions.length} />
 
       <section className="overscroll-y-contain gap-y-2 px-12 pb-10 pt-5 overflow-hidden  mx-auto   flex flex-col items-center">
