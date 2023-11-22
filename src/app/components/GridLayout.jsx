@@ -68,7 +68,7 @@ export default function GridLayout({ data, data2 }) {
 
       {toggleQuiz && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center content-center z-100">
-          <Quiz filterLess={filterLess} postplease={postplease} answer={answer} setAnswer={setAnswer} toggleQuiz={toggleHandler} data={data}></Quiz>
+          <Quiz filterLess={filterLess} postplease={postplease} answer={answer} setAnswer={setAnswer} toggleQuiz={toggleHandler} data={data} visteProdukter={visteProdukter}></Quiz>
         </div>
       )}
     </article>
