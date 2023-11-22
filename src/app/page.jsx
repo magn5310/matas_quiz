@@ -2,50 +2,36 @@
 
 import { useState } from "react";
 import Quiz from "./components/Quiz";
-import Profile from "./components/Profile";
+import GridLayout from "./components/GridLayout";
+
+export default async function Home() {
+  
+  
 
 
 
 
-export default function Home() {
-  const [answer, setAnswer] = useState({
-    name:"Simon juhl",
-    q1:"",
-    a1:"",
-    q2:"",
-    a2:"",
-    q3:"",
-    a3:"",
-    q4:"",
-    a4:"",
-    q5:"",
-    a5:""
-    });
 
-  async function postAnswer(){
-  let headersList = {
-    "Accept": "*/*",
-    "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdocmZpanV2YXVpcnB3b2lydGNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODMzMDI4ODcsImV4cCI6MTk5ODg3ODg4N30.OYkOttfTxQpFWSIFoRK-f0qW2S8j7U3tg6kAC3BLcnY",
-    "Content-Type": "application/json"
-   }
-   
-   let bodyContent = JSON.stringify(answer);
-   
-   let response = await fetch("https://ghrfijuvauirpwoirtcq.supabase.co/rest/v1/quizAnswers", { 
-     method: "POST",
-     body: bodyContent,
-     headers: headersList
-   });
-   
-   let data = await response.text();
-   console.log(data);
-  }
 
+  const res = await fetch("https://ghrfijuvauirpwoirtcq.supabase.co/rest/v1/ourFiltresMatas", {
+    headers: {
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdocmZpanV2YXVpcnB3b2lydGNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODMzMDI4ODcsImV4cCI6MTk5ODg3ODg4N30.OYkOttfTxQpFWSIFoRK-f0qW2S8j7U3tg6kAC3BLcnY",
+    },
+  });
+
+  const data = await res.json();
+  
+
+  const res2 = await fetch("https://ghrfijuvauirpwoirtcq.supabase.co/rest/v1/matasProducts", {
+    headers: {
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdocmZpanV2YXVpcnB3b2lydGNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODMzMDI4ODcsImV4cCI6MTk5ODg3ODg4N30.OYkOttfTxQpFWSIFoRK-f0qW2S8j7U3tg6kAC3BLcnY",
+    },
+  });
+  const data2 = await res2.json();
 
   return (
     <main className="bg-slate-100">
-<Profile/>
-      <Quiz setAnswer={setAnswer}/>
+      <GridLayout data2={data2} data={data}></GridLayout>
     </main>
   );
 }

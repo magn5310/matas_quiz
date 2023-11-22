@@ -1,18 +1,19 @@
-import styles from "./ProgessBar.module.css";
 import Image from "next/image";
 
-export default function ProgressBar() {
+export default function ProgressBar(props) {
+  const widthPercentage = Math.round((props.currentQuestion / (props.totalQuestions - 1)) * 100);
+  const progressBarWidth = {
+    width: `${widthPercentage}%`,
+  };
+
   return (
-    <div className="px-2 w-full">
+    <div className="px-2 py-1 md:px-8 w-full">
       <div className="flex justify-between">
-        <p className="text-xs font-bold text-rose-500">31%</p>
-        <p className="text-xs font-bold text-rose-500">209 produkter fundet</p>
+        <p className="text-xs font-bold text-rose-500">{widthPercentage}%</p>
+        <p className="text-xs font-bold text-rose-500">{props.visteProdukter.length}</p>
       </div>
       <div className="bg-rose-200 w-full h-3 rounded overflow-hidden mt-1">
-        {/* <div className={styles.bar}></div> */}
-        <div className="h-full w-40">
-          <Image className="h-full w-full object-cover" src="/pics/bar-bg.svg" width={400} height={10} alt="Quiz Progess" />
-        </div>
+        <Image style={progressBarWidth} className="h-full object-cover" src="/pics/bar-bg.svg" width={0} height={10} alt="Quiz Progress" />
       </div>
     </div>
   );

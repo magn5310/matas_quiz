@@ -11,6 +11,9 @@ module.exports = {
         inter: ["Inter", "sans-serif"],
         dm: ["DM Serif Text", "serif"],
       },
+      gridTemplateColumns: {
+        mainGrid: "repeat(auto-fill, minmax(220px, 1fr))",
+      },
     },
   },
   plugins: [],
