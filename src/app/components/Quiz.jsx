@@ -18,21 +18,28 @@ export default function Quiz(props) {
   console.log(props.data);
 
   const [visible, setVisible] = useState(0);
-
   const hårtypeArray = [];
+
 
   {
     props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => hårtypeArray.concat(item.Filterværdi));
   }
 
-  console.log(props.data.filter((item) => item.Filtergruppe === "Hårtype"));
 
+
+  console.log("TEST", props.data.filter((item) => item.Filtergruppe === "Hårtype"))
+const newAr = props.data.filter((item) => item.Filtergruppe === "Hårtype")
+
+console.log("REN FILTER DATA",props.data)
+console.log("Filtrere filter data",newAr)
   const questions = [
     { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
     { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
     { question: "Hvilket køn identificerer du dig som?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
-    { question: "!Fjerde spørgsmåls-test!", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
+    { question: "!Fjerde spørgsmåls-test!", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
   ];
+  
+
 
   function previousQuestion() {
     setVisible((oldValue) => {
@@ -44,7 +51,7 @@ export default function Quiz(props) {
     });
   }
 
-  let checked = false;
+  
 
   function nextQuestion() {
     setVisible((oldValue) => {
@@ -55,9 +62,20 @@ export default function Quiz(props) {
       return oldValue + 1;
     });
 
-    checked = true;
-    console.log("chekdeewhrioew", checked);
+
+
   }
+
+
+function toggleCheckbox(answerindex){
+console.log("INDEXINDEXINDEXINDEXINDEX",answerindex)
+    
+questions[visible].answers[answerindex].checked= !questions[visible].answers[answerindex].checked
+
+    }
+
+  
+
 
   function getAnswerAndSend(questionNumber, answerNumber, answerText) {
     const newObject = { ...props.answer };
@@ -86,7 +104,7 @@ export default function Quiz(props) {
             <h4 className="self-start text-zinc-800 text-xs sm:text-sm font-normal md:self-center">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
-                <Checkbox checked={false} getAnswerAndSend={getAnswerAndSend} setAnswer={props.setAnswer} key={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} questionIndex={visible} />
+                <Checkbox toggleCheckbox={toggleCheckbox} checked={answer.checked} getAnswerAndSend={getAnswerAndSend} setAnswer={props.setAnswer} key={questions[visible].answers.indexOf(answer)} answerIndex={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} questionIndex={visible} />
               ))}
             </CheckboxContainer>
             <SecondaryBtn />
