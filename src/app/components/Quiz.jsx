@@ -95,7 +95,7 @@ questions[visible].answers[answerindex].checked= !questions[visible].answers[ans
   return (
     <div className="grid bg-white w-full h-[90vh] lg:h-[95vh] absolute bottom-0 mx-auto overflow-hidden rounded-t-2xl drop-shadow-md lg:w-9/12 lg:inset-x-0 lg:bottom-0">
       <HeaderImg toggleQuiz={props.toggleQuiz} />
-      <ProgressBar questions={questions} currentQuestion={visible} totalQuestions={questions.length} />
+      <ProgressBar questions={questions} currentQuestion={visible} totalQuestions={questions.length} visteProdukter={props.visteProdukter} />
 
       <section className="w-full px-12 pb-2 pt-2 overflow-hidden mx-auto flex flex-col items-center relative">
         {questions[visible] && (
