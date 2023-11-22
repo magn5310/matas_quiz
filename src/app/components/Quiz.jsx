@@ -95,7 +95,7 @@ export default function Quiz(props) {
       </section>
       <NavBtnContainer>
         <BackBtn previousQuestion={previousQuestion} currentQuestion={questions[visible]} />
-        <NextBtn postplease={props.postplease} toggleQuiz={props.toggleQuiz} nextQuestion={nextQuestion} currentQuestion={questions[visible]} arrayLength={visible} />
+        <NextBtn filterLess={props.filterLess} postplease={props.postplease} toggleQuiz={props.toggleQuiz} nextQuestion={nextQuestion} currentQuestion={questions[visible]} arrayLength={visible} />
       </NavBtnContainer>
     </div>
   );

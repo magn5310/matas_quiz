@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function GridLayout({ data, data2 }) {
   console.log("Det her er min NYE data.", data);
   const [toggleQuiz, setToggleQuiz] = useState(false);
-
+  const [visteProdukter, setVisteProdukter] = useState(data2.slice(0, 50));
   const [answer, setAnswer] = useState({
     name: "",
     q1: "",
@@ -25,6 +25,11 @@ export default function GridLayout({ data, data2 }) {
     setToggleQuiz((old) => !old);
     postplease(answer);
   }
+  const filterLess = () => {
+    const aktuelLængde = visteProdukter.length;
+    const nyeProdukter = visteProdukter.slice(aktuelLængde / 2);
+    setVisteProdukter(nyeProdukter);
+  };
 
   async function postAnswer(answer) {
     console.log(answer);
@@ -56,14 +61,14 @@ export default function GridLayout({ data, data2 }) {
       <div className="grid grid-cols-mainGrid gap-4 p-32 items-stretch relative">
         <QuizCard toggleQuiz={toggleHandler} />
 
-        {data2.map((item) => (
+        {visteProdukter.map((item) => (
           <ProductCard name={item.name} image={item.image} brand={item.brand} id={item.id} price={item.price} key={item.id} />
         ))}
       </div>
 
       {toggleQuiz && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center content-center z-100">
-          <Quiz postplease={postplease} answer={answer} setAnswer={setAnswer} toggleQuiz={toggleHandler} data={data}></Quiz>
+          <Quiz filterLess={filterLess} postplease={postplease} answer={answer} setAnswer={setAnswer} toggleQuiz={toggleHandler} data={data}></Quiz>
         </div>
       )}
     </article>
