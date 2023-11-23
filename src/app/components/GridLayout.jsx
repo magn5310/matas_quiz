@@ -73,7 +73,7 @@ export default function GridLayout({ data, data2 }) {
       </div>
 
       {toggleQuiz && (
-        <div className={`fixed transition-all ease-linear duration-250 top-0 left-0 w-full h-full flex items-center content-center z-100 ${toggleIdle && "top-[85%] "}`}>
+        <div className={`fixed transition-all ease-linear duration-250 top-0 left-0 w-full h-full flex items-center content-center z-100 ${toggleIdle && "sm:top-[85%] top-[83%]  "}`}>
           <Quiz filterLess={filterLess} postplease={postplease} answer={answer} setAnswer={setAnswer} toggleIdleStatus={toggleIdle} toggleIdle={toggleIdleHandler} toggleQuiz={toggleHandler} data={data} visteProdukter={visteProdukter}></Quiz>
         </div>
       )}
