@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 export default function GridLayout({ data, data2 }) {
   console.log("Det her er min NYE data.", data);
   const [toggleQuiz, setToggleQuiz] = useState(false);
+  const [toggleIdle, setToggleIdle] = useState(false);
   const [visteProdukter, setVisteProdukter] = useState(data2.slice(0, 50));
   const [answer, setAnswer] = useState({
     name: "",
@@ -26,6 +27,9 @@ export default function GridLayout({ data, data2 }) {
   function toggleHandler() {
     setToggleQuiz((old) => !old);
     postplease(answer);
+  }
+  function toggleIdleHandler() {
+    setToggleIdle((old) => !old);
   }
   const filterLess = () => {
     const aktuelLængde = visteProdukter.length;
@@ -69,8 +73,8 @@ export default function GridLayout({ data, data2 }) {
       </div>
 
       {toggleQuiz && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center content-center z-100">
-          <Quiz filterLess={filterLess} postplease={postplease} answer={answer} setAnswer={setAnswer} toggleQuiz={toggleHandler} data={data} visteProdukter={visteProdukter}></Quiz>
+        <div className={`fixed transition-all ease-linear duration-250 top-0 left-0 w-full h-full flex items-center content-center z-100 ${toggleIdle && "top-[85%] "}`}>
+          <Quiz filterLess={filterLess} postplease={postplease} answer={answer} setAnswer={setAnswer} toggleIdle={toggleIdleHandler} toggleQuiz={toggleHandler} data={data} visteProdukter={visteProdukter}></Quiz>
         </div>
       )}
     </article>

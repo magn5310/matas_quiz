@@ -2,7 +2,7 @@ import styles from "./HeaderImg.module.css";
 
 import FoldDownBtn from "./FoldDownBtn";
 
-export default function HeaderImg({ toggleQuiz }) {
+export default function HeaderImg({ toggleIdle }) {
   return (
     <header
       className={styles.headerImg}
@@ -12,8 +12,9 @@ export default function HeaderImg({ toggleQuiz }) {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPositionY: "40%",
-      }}>
-      <FoldDownBtn toggleQuiz={toggleQuiz} />
+      }}
+    >
+      <FoldDownBtn toggleIdle={toggleIdle} />
       <h2 className="text-3xl text-center font-dm text-white row-start-2 col-start-2 z-30 mb-5">
         Find de bedste <br /> hårprodukter til dit hår
       </h2>
