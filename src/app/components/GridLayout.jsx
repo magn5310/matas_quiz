@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import Quiz from "./Quiz";
 import QuizCard from "./QuizCard";
 import LoginCard from "./LoginCard";
+import styles from "./GridLayout.module.css";
 import { useState, useEffect } from "react";
 export default function GridLayout({ data, data2 }) {
   console.log("Det her er min NYE data.", data);
@@ -33,7 +34,7 @@ export default function GridLayout({ data, data2 }) {
   };
 
   async function postAnswer() {
-    console.log("JEG POSTER DET HER NU",answer);
+    console.log("JEG POSTER DET HER NU", answer);
     let headersList = {
       Accept: "*/*",
       apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdocmZpanV2YXVpcnB3b2lydGNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODMzMDI4ODcsImV4cCI6MTk5ODg3ODg4N30.OYkOttfTxQpFWSIFoRK-f0qW2S8j7U3tg6kAC3BLcnY",
@@ -59,17 +60,11 @@ export default function GridLayout({ data, data2 }) {
 
   return (
     <article className="relative">
-      <div className="grid grid-cols-mainGrid gap-4 p-32 items-stretch relative">
-      {visteProdukter.length < 50 ? (
-        <LoginCard postAnswer={postAnswer} setAnswer={setAnswer} answer={answer} />
-      ) : (
-        <QuizCard toggleQuiz={toggleHandler} />
-      )}
-      
-    
+      <div className={`grid grid-cols-mainGrid gap-4 p-32 items-stretch relative ${visteProdukter.length < 25 ? styles.bestMatch : ""}`}>
+        {visteProdukter.length < 50 ? <LoginCard postAnswer={postAnswer} setAnswer={setAnswer} answer={answer} /> : <QuizCard toggleQuiz={toggleHandler} />}
 
-        {visteProdukter.map((item) => (
-          <ProductCard name={item.name} image={item.image} brand={item.brand} id={item.id} price={item.price} key={item.id} />
+        {visteProdukter.map((item, index) => (
+          <ProductCard name={item.name} image={item.image} brand={item.brand} id={item.id} price={item.price} key={item.id} isBestMatch={visteProdukter.length < 25 && index === 0} />
         ))}
       </div>
 

@@ -1,0 +1,3 @@
+.bestMatch > :nth-child(2) {
+  border: 3px solid #f43f5e;
+}
