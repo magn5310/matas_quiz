@@ -36,7 +36,7 @@ export default function Quiz(props) {
     { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
     { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
     { question: "Hvilket køn identificerer du dig som?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
-    { question: "!Fjerde spørgsmåls-test!", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
+    { question: "Hvilken finish ønsker du?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
   ];
 
   function previousQuestion() {

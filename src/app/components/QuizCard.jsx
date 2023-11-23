@@ -6,7 +6,7 @@ export default function QuizCard({ toggleQuiz }) {
       <img className="object-cover h-[60%]" src="/pics/product.jpg" alt="product" />
       <div className="text-center flex flex-col justify-center items-center  p-1">
         <p className="text-xs uppercase">Find din favorit</p>
-        <h3 className="text-lg font-dm">Hvilken [produkt] passer bedst til dig?</h3>
+        <h3 className="text-lg font-dm">Hvilket hårprodukt passer bedst til dig?</h3>
         <button className="text-sm uppercase underline">Tag testen</button>
       </div>
     </article>
