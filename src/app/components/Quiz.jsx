@@ -33,7 +33,7 @@ export default function Quiz(props) {
   console.log("REN FILTER DATA", props.data);
   console.log("Filtrere filter data", newAr);
   const questions = [
-    { question: "Hvad beskriver bedst dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
+    { question: "Hvad beskriver bedst dit hår?", amount: "maksimum 3", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
     { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
     { question: "Hvilket køn identificerer du dig som?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
     { question: "Hvilken finish ønsker du?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
