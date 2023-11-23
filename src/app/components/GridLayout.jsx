@@ -64,7 +64,7 @@ export default function GridLayout({ data, data2 }) {
 
   return (
     <article className="relative">
-      <div className={`grid grid-cols-mainGrid gap-4 p-32 items-stretch relative ${visteProdukter.length < 25 ? styles.bestMatch : ""}`}>
+      <div className={`grid grid-cols-2 lg:grid-cols-mainGrid gap-4 p-4 lg:p-32 justify-center items-stretch relative ${visteProdukter.length < 25 ? styles.bestMatch : ""}`}>
         {visteProdukter.length < 50 ? <LoginCard postAnswer={postAnswer} setAnswer={setAnswer} answer={answer} /> : <QuizCard toggleQuiz={toggleHandler} />}
 
         {visteProdukter.map((item, index) => (

@@ -19,13 +19,13 @@ export default function ProductCard({ name, id, image, brand, price, isBestMatch
         <p>{Math.floor(id / 1000 - 600)}</p>
       </div>
       <div>
-        <p className="font-bold">{brand}</p>
+        <p className="lg:block hidden font-bold">{brand}</p>
         <p>{name}</p>
       </div>
       <p className="font-bold">{price}</p>
       <div className="flex gap-2">
-        <button className="bg-slate-500 font-bold text-white grow rounded-lg p-4">Læg i kurv</button>
-        <button className="bg-slate-200 rounded-lg p-4">
+        <button className="bg-slate-500 font-bold text-white lg:text-base text-sm grow rounded-lg p-2">Læg i kurv</button>
+        <button className="bg-slate-200 rounded-lg p-2 lg:px-4 lg:text-base text-sm">
           <AiFillHeart />
         </button>
       </div>
