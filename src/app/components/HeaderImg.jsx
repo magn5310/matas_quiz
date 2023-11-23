@@ -2,7 +2,7 @@ import styles from "./HeaderImg.module.css";
 
 import FoldDownBtn from "./FoldDownBtn";
 
-export default function HeaderImg({ toggleIdle }) {
+export default function HeaderImg({ toggleIdle, toggleIdleStatus }) {
   return (
     <header
       className={styles.headerImg}
@@ -14,7 +14,7 @@ export default function HeaderImg({ toggleIdle }) {
         backgroundPositionY: "40%",
       }}
     >
-      <FoldDownBtn toggleIdle={toggleIdle} />
+      <FoldDownBtn toggleIdle={toggleIdle} toggleIdleStatus={toggleIdleStatus} />
       <h2 className="text-3xl text-center font-dm text-white row-start-2 col-start-2 z-30 mb-5">
         Find de bedste <br /> hårprodukter til dit hår
       </h2>
