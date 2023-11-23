@@ -33,7 +33,7 @@ export default function Quiz(props) {
   console.log("REN FILTER DATA", props.data);
   console.log("Filtrere filter data", newAr);
   const questions = [
-    { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
+    { question: "Hvad beskriver bedst dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
     { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
     { question: "Hvilket køn identificerer du dig som?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
     { question: "Hvilken finish ønsker du?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
@@ -89,7 +89,7 @@ export default function Quiz(props) {
         {questions[visible] && (
           <>
             <h3 className="text-center text-rose-500 font-medium font-sans text-2xl">{questions[visible].question}</h3>
-            <h4 className="self-start text-zinc-800 text-xs sm:text-sm font-normal md:self-center">Vælg {questions[visible].amount}</h4>
+            <h4 className="self-start text-zinc-800 text-xs my-2 sm:text-sm font-normal self-center">Vælg {questions[visible].amount}</h4>
             <CheckboxContainer>
               {questions[visible].answers.map((answer) => (
                 <Checkbox toggleCheckbox={toggleCheckbox} checked={answer.checked} getAnswerAndSend={getAnswerAndSend} setAnswer={props.setAnswer} key={questions[visible].answers.indexOf(answer)} answerIndex={questions[visible].answers.indexOf(answer)} label={answer.Filterværdi} questionIndex={visible} />
