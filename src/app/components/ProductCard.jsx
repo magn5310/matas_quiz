@@ -4,16 +4,18 @@ import { AiFillHeart } from "react-icons/ai";
 export default function ProductCard({ name, id, image, brand, price }) {
   const priceOnlyNumber = parseFloat(price);
   return (
-    <article className="flex flex-col p-4 bg-white max-w-xs rounded-lg overflow-hidden">
+    <article className="flex flex-col p-4 bg-white max-w-xs rounded-lg overflow-hidden gap-1">
       <p className="bg-slate-200 p-1 font-inter rounded-lg self-start">Spar {(priceOnlyNumber * 0.1).toFixed(0)}%</p>
       <img className="object-cover h-40	flex justify-center align-middle mx-auto py-4 w-max" src={image} alt="product" />
-      <div className="flex items-center">
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-        <p>(30)</p>
+      <div className="flex gap-1 items-center">
+        <span className="flex">
+          <AiFillStar />
+          <AiFillStar />
+          <AiFillStar />
+          <AiFillStar />
+          <AiFillStar />
+        </span>
+        <p>{Math.floor(Math.random() * 50) + 1}</p>
       </div>
       <div>
         <p className="font-bold">{brand}</p>

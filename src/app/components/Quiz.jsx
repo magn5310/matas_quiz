@@ -20,26 +20,24 @@ export default function Quiz(props) {
   const [visible, setVisible] = useState(0);
   const hårtypeArray = [];
 
-
   {
     props.data.filter((item) => item.Filtergruppe === "Hårtype").map((item) => hårtypeArray.concat(item.Filterværdi));
   }
 
+  console.log(
+    "TEST",
+    props.data.filter((item) => item.Filtergruppe === "Hårtype")
+  );
+  const newAr = props.data.filter((item) => item.Filtergruppe === "Hårtype");
 
-
-  console.log("TEST", props.data.filter((item) => item.Filtergruppe === "Hårtype"))
-const newAr = props.data.filter((item) => item.Filtergruppe === "Hårtype")
-
-console.log("REN FILTER DATA",props.data)
-console.log("Filtrere filter data",newAr)
+  console.log("REN FILTER DATA", props.data);
+  console.log("Filtrere filter data", newAr);
   const questions = [
     { question: "Har du en udfordring med dit hår?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårtype") },
     { question: "Hvad er din hårlængde?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Hårlængde") },
-    { question: "Hvilket køn identificerer du dig som?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
-    { question: "!Fjerde spørgsmåls-test!", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
+    { question: "Hvilken af disse beskriver dig bedst?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Køn") },
+    { question: "Hvilket finish ønsker du mest?", amount: "kun 1", answers: props.data.filter((item) => item.Filtergruppe === "Finish") },
   ];
-  
-
 
   function previousQuestion() {
     setVisible((oldValue) => {
@@ -51,8 +49,6 @@ console.log("Filtrere filter data",newAr)
     });
   }
 
-  
-
   function nextQuestion() {
     setVisible((oldValue) => {
       if (oldValue === questions.length - 1) {
@@ -61,21 +57,13 @@ console.log("Filtrere filter data",newAr)
       console.log(`Next: The count is ${visible}`);
       return oldValue + 1;
     });
-
-
-
   }
 
+  function toggleCheckbox(answerindex) {
+    console.log("INDEXINDEXINDEXINDEXINDEX", answerindex);
 
-function toggleCheckbox(answerindex){
-console.log("INDEXINDEXINDEXINDEXINDEX",answerindex)
-    
-questions[visible].answers[answerindex].checked= !questions[visible].answers[answerindex].checked
-
-    }
-
-  
-
+    questions[visible].answers[answerindex].checked = !questions[visible].answers[answerindex].checked;
+  }
 
   function getAnswerAndSend(questionNumber, answerNumber, answerText) {
     const newObject = { ...props.answer };
