@@ -20,11 +20,11 @@ export default function LoginCard(props) {
   return (
     <article className="flex flex-col bg-white  max-w-xs justify-center items-center rounded-lg overflow-hidden">
       {loggedIn ? (
-        <>
+        <div className="flex flex-col justify-center text-center items-center w-24 sm:w-full">
           <h3 className="font-bold">Velkommen tilbage {name}</h3>
           <p>Se dine resultater her</p>
           <button className="cursor-pointer text-white mt-2 bg-rose-500 px-4 py-2 rounded-sm">Din side</button>
-        </>
+        </div>
       ) : (
         <form className="flex flex-col justify-center items-center w-24 sm:w-full" onSubmit={handleSubmit}>
           <h3 className="font-bold">Login</h3>
